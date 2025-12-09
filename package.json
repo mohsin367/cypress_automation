@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "cypress": "^15.7.1",
+    "install": "^0.13.0"
+  }
+}
