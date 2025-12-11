@@ -3,6 +3,7 @@ export const LoginLocators = {
     password_text : "//p[@class='oxd-text oxd-text--p'][2]",
     username: 'input[name="username"]',
     password: "input[name='password']",
-    submitButton: "button[type='submit']"
+    submitButton: "button[type='submit']",
+    error_message_wrong_credentials: "//p[contains(@class, 'oxd-alert-content-text') and contains(., 'Invalid credentials')]"
 }
   
