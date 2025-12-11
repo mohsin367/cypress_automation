@@ -14,4 +14,9 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
+// cypress/support/e2e.js
+
+const cypressXpath = require('cypress-xpath')
+
 import './commands'
+
