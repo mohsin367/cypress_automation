@@ -59,12 +59,10 @@ describe("Login Tests", () => {
         login.emptyErrorMessage().should("be.visible").and("contain", "Required")
 
     });
-    it.only("Empty username field & Empty password field", function () {
+    it("Empty username field & Empty password field", function () {
         login.submit();
         cy.wait(1000)
         login.emptyErrorMessage().should("be.visible").and("contain", "Required").should('have.length', '2')
-        // login.emptyErrorMessage().should("be.visible").and("contain", "Required")
-
     });
 });
 

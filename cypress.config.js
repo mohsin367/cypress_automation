@@ -1,6 +1,22 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+  reporter: "mochawesome",
+  reporterOptions: {
+    overwrite: false,
+    html: true,
+    json: false,
+
+    // 🔥 IMPORTANT (hide code)
+    showHooks: "never",
+    code: false,
+
+    // UI improvements
+    charts: true,
+    reportPageTitle: "OrangeHRM Automation Report",
+    inlineAssets: true,
+    embeddedScreenshots: true
+  },
   e2e: {
     baseUrl: "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
     setupNodeEvents(on, config) {
