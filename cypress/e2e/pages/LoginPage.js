@@ -14,11 +14,17 @@ class LoginPage {
         return cy.xpath(LoginLocators.password_text).invoke('text').       // Password is trimmed which was visible on the username & password field
             then((text) => text.replace('Password : ', '').trim());
     }
-    username(){
-        return cy.xpath(LoginLocators.username_text)
+    username(username_data){
+        cy.get(LoginLocators.username).scrollIntoView()
+        .should('be.visible')
+        .click({ force: true }) // click to focus
+        .clear().type(username_data),{ timeout: 10000 };
     }
-    password(){
-        return cy.xpath(LoginLocators.password_text)
+    password(password_data){
+        cy.get(LoginLocators.password).scrollIntoView()
+        .should('be.visible')
+        .click({ force: true }) // click to focus
+        .clear().type(password_data),{ timeout: 10000 };
     }
 
     enterCredentials(username_data, password_data) {
@@ -38,6 +44,9 @@ class LoginPage {
     }
     getErrorMessage(){
         return cy.xpath(LoginLocators.error_message_wrong_credentials)
+    }
+    emptyErrorMessage(){
+        return cy.xpath(LoginLocators.error_message_required)
     }
 }
 
