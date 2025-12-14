@@ -24,7 +24,6 @@ describe("Login Tests", () => {
         login.getPassword().then(passwordText => {
             login.enterCredentials(this.data.invalidUser.username, passwordText);
             login.submit();
-            cy.wait(1500)
             login.getErrorMessage().should("be.visible").and("contain", "Invalid credentials")
         })
     });
@@ -33,7 +32,6 @@ describe("Login Tests", () => {
         login.getUsername().then(usernameText => {
             login.enterCredentials(usernameText, this.data.invalidUser.password);
             login.submit();
-            cy.wait(1500)
             login.getErrorMessage().should("be.visible").and("contain", "Invalid credentials")
         })
     });
@@ -48,20 +46,17 @@ describe("Login Tests", () => {
     it("Empty username field & Invalid password", function () {
         login.password(this.data.validUser.password)
         login.submit();
-        cy.wait(1000)
         login.emptyErrorMessage().should("be.visible").and("contain", "Required")
 
     });
     it("Valid username & Empty password field", function () {
         login.username(this.data.validUser.username)
         login.submit();
-        cy.wait(1000)
         login.emptyErrorMessage().should("be.visible").and("contain", "Required")
 
     });
     it("Empty username field & Empty password field", function () {
         login.submit();
-        cy.wait(1000)
         login.emptyErrorMessage().should("be.visible").and("contain", "Required").should('have.length', '2')
     });
 });
