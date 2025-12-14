@@ -6,12 +6,12 @@ class LoginPage {
     }
 
     getUsername() {
-        return cy.xpath(LoginLocators.username_text),{timeout:10000}.invoke('text').     // username is trimmed which was visible on the username field
+        return cy.xpath(LoginLocators.username_text).invoke('text').     // username is trimmed which was visible on the username field
             then((text) => text.replace('Username : ', '').trim());      
     }
 
     getPassword() {
-        return cy.xpath(LoginLocators.password_text),{timeout:10000}.invoke('text').       // Password is trimmed which was visible on the username & password field
+        return cy.xpath(LoginLocators.password_text).invoke('text').       // Password is trimmed which was visible on the username & password field
             then((text) => text.replace('Password : ', '').trim());
     }
     username(username_data){
@@ -43,10 +43,10 @@ class LoginPage {
         cy.get(LoginLocators.submitButton).click();
     }
     getErrorMessage(){
-        return cy.xpath(LoginLocators.error_message_wrong_credentials), {timeout: 10000}
+        return cy.xpath(LoginLocators.error_message_wrong_credentials)
     }
     emptyErrorMessage(){
-        return cy.xpath(LoginLocators.error_message_required), {timeout:10000}
+        return cy.xpath(LoginLocators.error_message_required)
     }
 }
 
