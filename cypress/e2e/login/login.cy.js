@@ -7,7 +7,7 @@ describe("Login Tests", () => {
         cy.fixture("loginData").as("data");
         login.navigate();
     });
-    // Positive test case
+    // Positive test case with valid username and password
     it("Valid Login with admin credentials", () => {
 
         // Extract username and password from page
