@@ -18,13 +18,13 @@ class LoginPage {
         cy.get(LoginLocators.username).scrollIntoView()
         .should('be.visible')
         .click({ force: true }) // click to focus
-        .clear().type(username_data),{ timeout: 10000 };
+        .clear().type(username_data)
     }
     password(password_data){
         cy.get(LoginLocators.password).scrollIntoView()
         .should('be.visible')
         .click({ force: true }) // click to focus
-        .clear().type(password_data),{ timeout: 10000 };
+        .clear().type(password_data)
     }
 
     enterCredentials(username_data, password_data) {
@@ -32,11 +32,11 @@ class LoginPage {
         cy.get(LoginLocators.username).scrollIntoView()
         .should('be.visible')
         .click({ force: true }) // click to focus
-        .clear().type(username_data),{ timeout: 10000 };
+        .clear().type(username_data)
         cy.get(LoginLocators.password).scrollIntoView()
         .should('be.visible')
         .click({ force: true }) // click to focus
-        .clear().type(password_data),{ timeout: 10000 };
+        .clear().type(password_data)
     }
 
     submit() {

@@ -23,3 +23,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('selectDropdownOption', (wrapperSelector, optionText, index) => {
+    cy.get(wrapperSelector).eq(index).within(() => {
+      cy.contains('span', optionText).click()
+    })
+  })
+  Cypress.Commands.add(
+    'selectAutocompleteOption',
+    (inputSelector, optionText) => {
+      cy.get(inputSelector)
+        .should('be.visible')
+        .clear()
+        .type(optionText)
+  
+      cy.get('div[role="listbox"]')
+        .should('be.visible')
+        .contains(optionText)
+        .click()
+    }
+  )
+  
+  

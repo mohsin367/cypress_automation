@@ -19,6 +19,8 @@ module.exports = defineConfig({
   },
   e2e: {
     baseUrl: "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+    dashboardUrl: "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index",
+    defaultCommandTimeout: 10000,
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
