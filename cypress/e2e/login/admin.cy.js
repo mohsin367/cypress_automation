@@ -13,7 +13,7 @@ describe("Add Admin Tests", () => {
 beforeEach(() => {
     
     cy.session('user-session', () => {
-    login.navigate()
+    login.navigate(Cypress.config().dashboardUrl)
     login.getUsername().then(usernameText => {
         login.getPassword().then(passwordText => {
             login.enterCredentials(usernameText, passwordText);
@@ -25,10 +25,13 @@ beforeEach(() => {
     })
     
   })
-  it.only('Add new admin in the system', () => {
-    admin.navigate()
+  let firstName = user.generateUser().firstName
+  let lastName = user.generateUser().lastName
+  let employeeName = firstName+' '+lastName
+  it('Add new admin in the system', () => {
+    admin.navigate(Cypress.config().dashboardUrl)
     admin.click_admin()
-    admin.add_button(AdminLocators.add_button,AdminLocators.addButtonText)
+    admin.button(AdminLocators.add_button,AdminLocators.addButtonText)
     admin.userRole(0)
     cy.selectDropdownOption('.oxd-select-wrapper', 'Admin', '0')   // ESS
     admin.userRole(1)
@@ -37,17 +40,26 @@ beforeEach(() => {
         'input[placeholder="Type for hints..."]',
         'Amelia Brown'
     )
-    admin.userName(user.generateUser().firstName+' '+user.generateUser().lastName)
+    admin.userName(employeeName)
     let randomNumber = user.getRandomNumber()
     admin.password(0,'Qwerty'+randomNumber)
     admin.password(1,'Qwerty'+randomNumber)
-    admin.add_button(AdminLocators.add_button,AdminLocators.submitButton)
-      
+    admin.button(AdminLocators.add_button,AdminLocators.submitButton)
+    cy.contains('Successfully Saved', { timeout: 5000 })
+  .should('exist')
+  
     
   })
-  it('should create a new record', () => {
-    // cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates')
-    // cy.get('.create-btn').click()
+  it('should check if record is successfully created and availabel on website', () => {
+    admin.navigate(Cypress.config().adminUrl)
+    admin.searchUsername(employeeName)
+    admin.userRole(0)
+    cy.selectDropdownOption('.oxd-select-wrapper', 'Admin', '0')
+    admin.userRole(1)
+    cy.selectDropdownOption('.oxd-select-wrapper', 'Enabled', '1')
+    admin.scrollUp()
+    admin.button(AdminLocators.add_button,AdminLocators.searchButtonText)
+    admin.userSearch(employeeName)
   })
   
 }) 

@@ -4,10 +4,10 @@ class AdminPage {
     click_admin(){
         return cy.xpath(AdminLocators.admin_click_path).click()
     }
-    navigate() {
-        cy.visit(Cypress.config().dashboardUrl);
+    navigate(url) {
+        cy.visit(url);
     }
-    add_button(locator,text){
+    button(locator,text){
         return cy.get(locator).contains(text).click()
     }
     userRole(index){
@@ -23,6 +23,18 @@ class AdminPage {
     }
     password(index,pass){
         cy.xpath(AdminLocators.PasswordBox).eq(index).type(pass)
+    }
+    searchUsername(text){
+        
+        cy.xpath(AdminLocators.searchUsername).scrollIntoView().type(text)
+        cy.scrollTo('top')
+    }
+    scrollUp(){
+        cy.scrollTo('top')
+    }
+    userSearch(dynamicText){
+        cy.xpath(AdminLocators.cellByText(dynamicText))
+  .should('be.visible')
     }
     
 
