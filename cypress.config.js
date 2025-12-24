@@ -17,6 +17,10 @@ module.exports = defineConfig({
     inlineAssets: true,
     embeddedScreenshots: true
   },
+  retries: {
+    runMode: 2,   // retries in `cypress run`
+    openMode: 0   // retries in `cypress open`
+  },
   e2e: {
     baseUrl: "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
     dashboardUrl: "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index",
