@@ -5,7 +5,7 @@ import HelperFunction from "../utils/userGenerator";
 
 
 
-describe("Add Admin Tests", () => {
+describe("Add Admin Tests", { retries: 1 },() => {   // Retries added for only this  spec
     const login = new LoginPage()
     const admin = new AdminPage()
     const user = new HelperFunction()
@@ -17,7 +17,7 @@ beforeEach(() => {
     login.getUsername().then(usernameText => {
         login.getPassword().then(passwordText => {
             login.enterCredentials(usernameText, passwordText);
-            login.submit();
+            login.submit(); 
             cy.url().should("include", "/dashboard");
         });
     });
