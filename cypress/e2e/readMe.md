@@ -166,5 +166,5 @@ Real-world automation scenarios covered
 👨‍💻 Author
 
 Mohsin
-QA Automation Engineer
+Senior QA Automation Engineer
 Selenium | Cypress | Appium | API Automation | Playwright
