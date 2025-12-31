@@ -48,12 +48,8 @@ beforeEach(() => {
     info.fileSaveButton()
     cy.get('#oxd-toaster_1', { timeout: 5000 })
   .should('exist')
+})
     
-    
-
-  
-    
-  })
   
   
 }) 
