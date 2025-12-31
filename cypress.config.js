@@ -25,6 +25,7 @@ module.exports = defineConfig({
     baseUrl: "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
     dashboardUrl: "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index",
     adminUrl: "https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers",
+    myInfo: "https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber/7",
     defaultCommandTimeout: 10000,
     setupNodeEvents(on, config) {
       // implement node event listeners here

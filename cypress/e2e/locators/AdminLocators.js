@@ -10,7 +10,8 @@ export const AdminLocators = {
     submitButton: " Save ",
     searchUsername: "(//input[@class='oxd-input oxd-input--active'])[2]",
     searchButtonText: " Search ",
-    cellByText: (text) => `//div[contains(@class,'oxd-table-cell') and contains(@class,'oxd-padding-cell') and contains(text(),'${text}')]`
+    cellByText: (text) => `//div[contains(@class,'oxd-table-cell') and contains(@class,'oxd-padding-cell') and contains(text(),'${text}')]`,
+    dropDownLocators: ".oxd-select-wrapper"
       
     
 }
