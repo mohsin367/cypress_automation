@@ -33,7 +33,7 @@ class AdminPage {
         cy.scrollTo('top')
     }
     userSearch(dynamicText){
-        cy.xpath(AdminLocators.cellByText(dynamicText))
+        cy.xpath(AdminLocators.cellByText(dynamicText)).wait(200)
   .should('be.visible')
     }
     
